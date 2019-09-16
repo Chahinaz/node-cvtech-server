@@ -1,0 +1,36 @@
+{
+  "name": "cvtech-server",
+  "version": "1.0.0",
+  "description": "NodeJS, Express, PSQL API, for the CVTech application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel server.js --out-dir build",
+    "dev-start": "babel-watch server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chahinaz/node-cvtech-server.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "psql"
+  ],
+  "author": "Chahinaz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chahinaz/node-cvtech-server/issues"
+  },
+  "homepage": "https://github.com/Chahinaz/node-cvtech-server#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-watch": "^7.0.0"
+  }
+}
