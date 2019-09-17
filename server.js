@@ -1,6 +1,11 @@
 import express from 'express';
-import Profile from './src/usingJSObject/controllers/Profile';
+import dotenv from 'dotenv';
+import 'babel-polyfill';
+import ProfileJS from './src/usingJSObject/controllers/Profile';
+import ProfileDB from './src/usingDB/controllers/Profile';
 
+dotenv.config();
+const Profile = process.env.TYPE === 'db'? ProfileDB : ProfileJS;
 const app = express();
 
 /** MIDDLEWARES */
@@ -18,5 +23,5 @@ app.put('/api/profiles/:id', Profile.update);
 app.delete('/api/profiles/:id', Profile.delete);
 
 /** STARTING THE SERVER... */
-app.listen(3000);
-console.log('app running on port ', 3000);
+app.listen(process.env.PORT);
+console.log('Application running on port:', process.env.PORT);

@@ -1,6 +1,7 @@
 # idea
 .idea
 .idea/*
+.idea/workspace.xml
 
 # Logs
 logs
