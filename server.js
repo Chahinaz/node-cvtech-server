@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 /** Profile's ENDPOINTS */
 app.post('/api/profiles', Profile.create);
 app.post('/api/login', Profile.signUp);
-app.get('/api/profiles', Auth.verifyToken, Profile.getAll);  /* Only HRs can do that */
+app.get('/api/profiles', Profile.getAll);  /* Only HRs can do that */
 app.get('/api/profiles/:id', Auth.verifyToken, Profile.getOne);
 app.put('/api/profiles/:id', Auth.verifyToken, Profile.update);
 app.delete('/api/profiles/:id', Auth.verifyToken, Profile.delete);
