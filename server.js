@@ -9,6 +9,7 @@ import Auth from './src/usingDB/middleware/Auth';
 dotenv.config();
 const Profile = process.env.TYPE === 'db'? ProfileDB : ProfileJS;
 const app = express();
+
 const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 const passport = require('passport');
