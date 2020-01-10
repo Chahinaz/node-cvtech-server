@@ -20,7 +20,7 @@ const createProfileTable = () => {
         email VARCHAR(100) NOT NULL UNIQUE,
         password VARCHAR(200) NOT NULL,
         description text,
-        skills VARCHAR(100),
+        skills text[],
         sector VARCHAR(100),
         created_date TIMESTAMP,
         modified_date TIMESTAMP
@@ -43,7 +43,7 @@ const createOfferTable = () => {
         description text NOT NULL,
         missions text,
         neededProfile text,
-        contractType text,
+        contractType text[],
         localisation text,
         created_date TIMESTAMP,
         modified_date TIMESTAMP

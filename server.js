@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(cookieSession({
   name: process.env.NAME,
   keys: [process.env.SECRET],
-  maxAge: process.env.AGE // 24 hours
+  maxAge: process.env.AGE // 7 days
 }));
 
 /** MIDDLEWARE */
@@ -29,9 +29,9 @@ app.get('/', (req, res) => {
   return res.status(200).send({'message': 'Server connected.'});
 });
 
-/** Enable CORS from client-side */
+/** Enable CORS for client-side (cvtech-client) */
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+  res.header('Access-Control-Allow-Origin', process.env.ORIGIN);
   res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials');
   res.header('Access-Control-Allow-Credentials', 'true');
