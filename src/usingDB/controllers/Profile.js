@@ -3,9 +3,8 @@ import uuidv4 from 'uuid/v4';
 import db from '../db';
 import helper from './Helper';
 
-
 const Profile = {
-    async create(req, res){
+    async signUp(req, res){
         if(!req.body.email || !req.body.password)
             return res.status(400).send({'message':'Email or password missing.'});
 
@@ -14,9 +13,9 @@ const Profile = {
 
         const hashPassword = helper.hashPassword(req.body.password);
         const text = `INSERT INTO 
-                    profile(id, firstName, lastName, email, password, created_date, modified_date)
-                    VALUES ($1, $2, $3, $4, $5, $6, $7) returning *`;
-        const values =  [uuidv4(), req.body.firstName, req.body.lastName, req.body.email, hashPassword, moment(new Date()), moment(new Date())];
+                    profile(id, firstName, lastName, email, password, description, skills, sector, created_date, modified_date)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning *`;
+        const values =  [uuidv4(), req.body.firstName, req.body.lastName, req.body.email, hashPassword, "", [""], "", moment(new Date()), moment(new Date())];
 
         try{
             const rows = await db.query(text, values);
@@ -29,7 +28,7 @@ const Profile = {
         }
     },
 
-    async signUp(req,res){
+    async signIn(req,res){
         if(!req.body.email || !req.body.password)
             return res.status(400).send({'message': 'Email or password missing.'});
 
@@ -52,6 +51,12 @@ const Profile = {
         } catch(err) {
             return res.status(400).send(err);
         }
+    },
+
+    async logOut(req,res){
+        console.log(req.logout().token);
+        req.logout();
+        res.redirect('/api/signin');
     },
 
     async getAll(req, res) {

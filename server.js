@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(cookieSession({
   name: process.env.NAME,
   keys: [process.env.SECRET],
-  maxAge: process.env.AGE // 7 days
+  maxAge: process.env.AGE //3 days
 }));
 
 /** MIDDLEWARE */
@@ -39,8 +39,9 @@ app.use((req, res, next) => {
 });
 
 /** Profile's ENDPOINTS */
-app.post('/api/profiles', Profile.create);
-app.post('/api/login', Profile.signUp);
+app.post('/api/signin', Profile.signIn);
+app.post('/api/signup', Profile.signUp);
+app.post('/api/logout', Profile.logOut);
 app.get('/api/profiles', Profile.getAll);  /* Only HRs can do that */
 app.get('/api/profiles/:id', Auth.verifyToken, Profile.getOne);
 app.put('/api/profiles/:id', Auth.verifyToken, Profile.update);
@@ -56,4 +57,4 @@ app.delete('/api/offers/:id', Auth.verifyToken, Offer.delete);
 
 /** STARTING THE SERVER... */
 app.listen(process.env.PORT);
-console.log('Application running on port:', process.env.PORT);
+console.log('CV-Tech API running on port:', process.env.PORT);

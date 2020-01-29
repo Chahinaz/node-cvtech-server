@@ -1,12 +1,12 @@
 import ProfileModel from '../models/Profile';
 
 const Profile = {
-    create(req, res){
+    signUp(req, res){
         if(!req.body.firstName && !req.body.lastName && !req.body.email){
             return res.status(404).send({'message': 'All fields are required.'});
         }
 
-        const profile = ProfileModel.create(req.body);
+        const profile = ProfileModel.signUp(req.body);
         return res.status(201).send(profile);
     },
 
