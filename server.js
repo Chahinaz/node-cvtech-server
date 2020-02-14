@@ -48,7 +48,7 @@ app.put('/api/profiles/:id', Auth.verifyToken, Profile.update);
 app.delete('/api/profiles/:id', Auth.verifyToken, Profile.delete);
 
 /** Offer's ENDPOINTS */
-app.post('/api/offers', Auth.verifyToken, Offer.create);
+app.post('/api/offers', /** Auth.verifyToken, */ Offer.create);
 app.get('/api/offers', Offer.getAll);
 app.get('/api/offers/:id', Offer.getOne);
 app.put('/api/offers/:id', Auth.verifyToken, Offer.update);

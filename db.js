@@ -39,12 +39,15 @@ const createOfferTable = () => {
   const offerTable =   `CREATE TABLE IF NOT EXISTS offer(
         id UUID PRIMARY KEY,
         sector VARCHAR(100) NOT NULL,
-        post text NOT NULL,
+        post VARCHAR(100) NOT NULL,
         description text NOT NULL,
         missions text,
-        neededProfile text,
-        contractType text[],
-        localisation text,
+        knowledge text,
+        how_to_be text,
+        how_to_live text,
+        contract_type text[] NOT NULL,
+        location VARCHAR(100) NOT NULL ,
+        handicap bit,
         created_date TIMESTAMP,
         modified_date TIMESTAMP
     )`;
